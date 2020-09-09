@@ -1,3 +1,5 @@
+//const { text } = require("express");
+
 const socket = io ('/')
 const videoGrid=document.getElementById('video-grid');
 const myVideo=document.createElement('video');
@@ -10,7 +12,7 @@ var peer = new Peer(undefined,{
 }); 
 
 
-let myVideoStream
+let myVideoStream;
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
@@ -54,4 +56,6 @@ const addVideoStream = (video, stream)=>{
         })
         videoGrid.append(video);
 }
+
+
 
