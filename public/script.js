@@ -41,7 +41,7 @@ let text = $('input')
 
     socket.on('createMessage', message => {
         console.log(message);
-        $('ul').append(`<li class="message"<b>user</b></br> ${message} </li>`)
+        $('ul').append(`<li class="message"<b>user:</b></br> ${message} </li>`)
     })
 })
 
@@ -69,3 +69,58 @@ const addVideoStream = (video, stream)=>{
 }
 
 
+const muteUnmute = () => {
+    const enabled = myVideoStream.getAudioTracks()[0].enabled;
+    if(enabled){
+        myVideoStream.getAudioTracks()[0].enabled = false;
+        setUnmuteButton();
+    } else {
+        setMuteButton();
+        myVideoStream.getAudioTracks()[0].enabled = true;
+    }
+}
+
+
+const setMuteButton = () =>{
+    const html =`
+        <i class="fas fa-microphone"></i>
+        <span>Mute</span>
+    `
+    document.querySelector('.main__mute_button').innerHTML = html;
+}
+
+const setUnmuteButton = () =>{
+    const html =`
+        <i class="fas fa-microphone-slash unmute"></i>
+        <span>Unmute</span>
+    `
+    document.querySelector('.main__mute_button').innerHTML = html;
+}   
+
+const playStop = () => {
+    
+    let enabled = myVideoStream.getVideoTracks()[0].enabled;
+    if(enabled){
+        myVideoStream.getVideoTracks()[0].enabled = false;
+        setPlayVideo();
+    } else {
+        setStopVideo();
+        myVideoStream.getVideoTracks()[0].enabled = true;
+    }
+}
+
+const setStopVideo = () =>{
+    const html =`
+        <i class="fas fa-video"></i>
+        <span>Stop Video</span>
+    `
+    document.querySelector('.main__video_button').innerHTML = html;
+}  
+
+const setPlayVideo = () =>{
+    const html =`
+        <i class="fas fa-video-slash unmute"></i>
+        <span>Play Video</span>
+    `
+    document.querySelector('.main__video_button').innerHTML = html;
+}  

@@ -89,6 +89,7 @@ body{
 .main__chat_window {
     flex-grow: 1;
     overflow-y: auto;
+    
 }
 
 .messages{
@@ -99,6 +100,7 @@ body{
 .main__message_container {
     padding: 22px 12px;
     display: flex;
+    
 }
 
 .main__message_container input {
@@ -106,4 +108,8 @@ body{
     background-color: transparent;
     border: none;
     color: #F5F5F5;
+}
+
+.unmute{
+    color: #eb534b;
 }
